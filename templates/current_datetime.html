@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>current_datetime</title>
+</head>
+<body>
+    {% block content %}现在的日期时间：{{ current_date|date:"Y/m/d H:i:s" }}。{% endblock %}
+    <!--Datetime is: {{ current_date }}-->
+</body>
+</html>

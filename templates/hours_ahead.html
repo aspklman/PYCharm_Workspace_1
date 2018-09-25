@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>hours_ahead</title>
+</head>
+<body>
+    {% block content %}经过{{ offset }}小时后，时期时间是{{ dt|date:"Y/m/d H:i:s" }}。{% endblock %}
+    <!--Add {{ offset }} hour(s), it is {{ dt }}.-->
+</body>
+</html>
