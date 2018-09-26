@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta
 from books.views import search_form, search
+from contact.views import contact, thanks
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -28,4 +29,6 @@ urlpatterns = [
     url(r'^display_meta/$', display_meta),
     url(r'^search-form/$', search_form),
     url(r'^search/$', search),
+    url(r'^contact_form/$', contact),
+    url(r'^thanks/$', thanks),
 ]
