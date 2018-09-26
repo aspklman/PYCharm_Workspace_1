@@ -15,10 +15,12 @@ def hello(request):
     return HttpResponse("客户端路径是 %s" % request.path)
 
 def ua(request):
-    try:
-        ua = request.META['HTTP_USER_AGENT']
-    except KeyError:
-        ua = 'unknown'
+    # try:
+    #     ua = request.META['HTTP_USER_AGENT']
+    # except KeyError:
+    #     ua = 'unknown'
+    # return HttpResponse('您的浏览器是：%s' % ua)
+    ua = request.META.get('HTTP_USER_AGENT','unknown')
     return HttpResponse('您的浏览器是：%s' % ua)
 
 def current_datetime(request):
