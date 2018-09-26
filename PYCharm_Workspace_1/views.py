@@ -1,11 +1,35 @@
+#coding=utf-8
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 from django.http import HttpResponse, Http404
 import datetime
 #from django.template.loader import get_template
 #from django.template import Context
 from django.shortcuts import render_to_response
 
+def display_meta(request):
+    values = request.META.items()
+    values.sort()
+    html = []
+    for k, v in values:
+        html.append('<tr><td>%s</td><td>%s</td></tr>' % (k,v))
+    return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
 def hello(request):
-    return HttpResponse('Hello World!')
+    #return HttpResponse('Hello World!')
+    return HttpResponse("客户端路径是 %s" % request.path)
+
+def ua(request):
+    # try:
+    #     ua = request.META['HTTP_USER_AGENT']
+    # except KeyError:
+    #     ua = 'unknown'
+    # return HttpResponse('您的浏览器是：%s' % ua)
+    ua = request.META.get('HTTP_USER_AGENT','unknown')
+    return HttpResponse('您的浏览器是：%s' % ua)
 
 def current_datetime(request):
     current_date = datetime.datetime.now()
