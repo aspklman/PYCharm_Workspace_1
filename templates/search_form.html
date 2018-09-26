@@ -5,9 +5,18 @@
     <title>Search</title>
 </head>
 <body>
-    <form action="/search/" method="get">
+    <form action="" method="get">
         <input type="text" name="q">
         <input type="submit" value="Search">
     </form>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            <!-- <p style="color:red">Please submit a search term.</p>
+            <p style="color:red">不能超过10个字！</p> -->
+            {% endfor%}
+        </ul>
+    {% endif %}
 </body>
 </html>
