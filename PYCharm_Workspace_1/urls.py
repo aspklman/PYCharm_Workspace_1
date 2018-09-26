@@ -19,7 +19,7 @@ from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^hello/$',hello),
+    #url(r'^hello/$',hello),
     url(r'^time/$',current_datetime),
     url(r'^datetime/$',current_datetime),
     url(r'^plus/(\d{1,2})/$',hours_ahead),
