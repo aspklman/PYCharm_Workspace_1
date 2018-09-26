@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta
-from books.views import search_form
+from books.views import search_form, search
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^plus/(\d{1,2})/$',hours_ahead),
     url(r'^ua/$',ua),
     url(r'^display_meta/$', display_meta),
-    url(r'^search-form/$', search_form)
+    url(r'^search-form/$', search_form),
+    url(r'^search/$', search),
 ]
