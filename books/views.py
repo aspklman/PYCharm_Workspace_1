@@ -16,9 +16,14 @@ def search(request):
     # else:
     #     message = '你没有输入内容！'
     # return HttpResponse(message)
-    if 'q' in request.GET and request.GET['q']:
+    errors = []
+    if 'q' in request.GET:
         q = request.GET['q']
-        books = Book.objects.filter(title__icontains=q)
-        return render_to_response('search_result.html', {'books':books, 'query':q})
-    else:
-        HttpResponse('Please submit a search term.')
+        if not q:
+            errors.append('请输入要查找的书籍名称!')
+        elif len(q) > 10:
+            errors.append('不能超过10个字！')
+        else:
+            books = Book.objects.filter(title__icontains=q)
+            return render_to_response('search_result.html', {'books':books,'query':q})
+        return render_to_response('search_form.html', {'errors':errors})
