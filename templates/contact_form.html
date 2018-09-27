@@ -6,7 +6,25 @@
 </head>
 <body>
 
+    <h3>联系我们</h3>
 
+    {% if form.errors %}
+        <p style="color:blue">
+            请更正以下错误：{{ form.errors }}
+        </p>
+    {% endif %}
+
+
+    <form action="" method="post">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="提交">
+    </form>
+
+
+
+    <!--
     <form action="/contact/" method="post">
         <p>主题：<input type="text" name="subject" value="{{subject}}"></p>
         <p>邮件：<input type="text" name="email" value="{{ email }}"></p>
@@ -22,5 +40,6 @@
 
         <input type="submit" value="提交">
     </form>
+    -->
 </body>
 </html>
