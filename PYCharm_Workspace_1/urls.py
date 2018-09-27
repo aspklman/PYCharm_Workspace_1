@@ -18,6 +18,7 @@ from django.contrib import admin
 from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta
 from books.views import search_form, search
 from contact.views import contact, thanks
+from contact.forms import ContactForm
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
