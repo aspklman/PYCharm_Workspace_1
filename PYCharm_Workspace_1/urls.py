@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^display_meta/$', display_meta),
     url(r'^search-form/$', search_form),
     url(r'^search/$', search),
-    url(r'^contact_form/$', contact),
+    url(r'^contact/$', contact),
     url(r'^thanks/$', thanks),
 ]

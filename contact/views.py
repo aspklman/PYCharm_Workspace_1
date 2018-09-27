@@ -17,12 +17,16 @@ def contact(request):
             send_mail(
                 request.POST['subject'],
                 request.POST['message'],
-                request.POST.get['email','562142139@qq.com'],
+                request.POST.get('email','562142139@qq.com'),
                 ['562142139@qq.com'],
             )
-            return HttpResponseRedirect('/contact/thanks')
-    else:
-        return render_to_response('contact_form.html',{'errors':errors})
+            return HttpResponseRedirect('/thanks/')
+    return render_to_response('contact_form.html',{
+        'errors':errors,
+        'subject':request.POST.get('subject',''),
+        'message':request.POST.get('message',''),
+        'email':request.POST.get('email',''),
+    })
 
 def thanks(request):
-    return HttpResponse('谢谢您的邮件！我们会尽快处理！')
+    return render_to_response('thanks.html')
