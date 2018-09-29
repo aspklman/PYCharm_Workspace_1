@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.contrib import admin
-from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta
+from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta, index
 from books.views import search_form, search
 from contact.views import contact, thanks, my_image, unruly_passengers_csv, hello_pdf
 from contact.forms import ContactForm
@@ -26,6 +26,7 @@ from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', index, name='index'),
     url(r'^hello/$',hello),
     url(r'^time/$',current_datetime),
     url(r'^datetime/$',current_datetime),
@@ -39,8 +40,8 @@ urlpatterns = [
     url(r'^my_image/$', my_image),
     url(r'^unruly_passengers_csv/$', unruly_passengers_csv),
     url(r'^hello_pdf/$', hello_pdf),
-    # url(r'^accounts/login/$', login),
-    # url(r'^accounts/logout/$', logout),
+    #url(r'^accounts/login/$', login),
+    #url(r'^accounts/logout/$', logout),
     url(r'^users/', include('users.urls',namespace="users")),
     url(r'^users/', include('django.contrib.auth.urls')),
 ]
