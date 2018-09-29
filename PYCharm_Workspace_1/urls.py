@@ -13,12 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
+
 from django.conf.urls import include, url
 from django.contrib import admin
 from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta
 from books.views import search_form, search
-from contact.views import contact, thanks
+from contact.views import contact, thanks, my_image, unruly_passengers_csv, hello_pdf
 from contact.forms import ContactForm
+#from account.views import login_view
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -32,4 +36,11 @@ urlpatterns = [
     url(r'^search/$', search),
     url(r'^contact/$', contact),
     url(r'^thanks/$', thanks),
+    url(r'^my_image/$', my_image),
+    url(r'^unruly_passengers_csv/$', unruly_passengers_csv),
+    url(r'^hello_pdf/$', hello_pdf),
+    # url(r'^accounts/login/$', login),
+    # url(r'^accounts/logout/$', logout),
+    url(r'^users/', include('users.urls',namespace="users")),
+    url(r'^users/', include('django.contrib.auth.urls')),
 ]
