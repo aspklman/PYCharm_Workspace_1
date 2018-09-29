@@ -4,6 +4,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
 from django.shortcuts import render_to_response
 from contact.forms import ContactForm
+import csv
+from reportlab.pdfgen import canvas
+from cStringIO import StringIO
 
 def contact(request):
     if request.method == 'POST':
@@ -45,3 +48,34 @@ def contact(request):
 
 def thanks(request):
     return render_to_response('thanks.html')
+
+def my_image(request):
+    image_data = open("e:\login.jpg", "rb").read()
+    return HttpResponse(image_data, content_type="image/jpg")
+
+UNRULY_PASSENGERS = [146,184,235,200,226,251,299,273,281,304,203]
+
+def unruly_passengers_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['content-disposition'] = 'attachment; filename=unruly.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['year','unruly airline passengers'])
+    for (year,num) in zip(range(1995,2006),UNRULY_PASSENGERS):
+        writer.writerow([year,num])
+    return response
+
+def hello_pdf(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['content-Disposition'] = 'attachment; filename=hello.pdf'
+
+    temp = StringIO()
+
+    p = canvas.Canvas(temp)
+
+    p.drawString(300, 300, 'Hello World!')
+
+    p.showPage()
+    p.save()
+    response.write(temp.getvalue())
+    return response
