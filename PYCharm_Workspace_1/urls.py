@@ -24,7 +24,7 @@ from contact.forms import ContactForm
 #from account.views import login_view
 from django.contrib.auth.views import login, logout
 from users.views import index
-from length_check.views import search_test
+from gdpdata.views import gdpdata
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -46,5 +46,5 @@ urlpatterns = [
     #url(r'^accounts/logout/$', logout),
     url(r'^users/', include('users.urls',namespace="users")),
     url(r'^users/', include('django.contrib.auth.urls')),
-    url(r'^length_check/$', search_test),
+    url(r'^gdpdata/$', gdpdata),
 ]

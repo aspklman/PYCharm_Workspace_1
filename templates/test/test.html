@@ -5,11 +5,11 @@
     <title>长度检查数据查询</title>
 </head>
 <body>
-    {% if test %}
-        <p>Found {{ test|length }} country{{ test|pluralize}}.</p>
+    {% if country %}
+        <p>Found {{ country|length }} country{{ country|pluralize }}.</p>
         <ul>
-            {% for t in test %}
-            <li>{{ t.title }}</li>
+            {% for t in country %}
+            <li>{{ t.country }}</li>
             {% endfor %}
         </ul>
     {% else %}
