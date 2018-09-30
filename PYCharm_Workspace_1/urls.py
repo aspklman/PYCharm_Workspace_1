@@ -17,12 +17,14 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.contrib import admin
-from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta, index
+from PYCharm_Workspace_1.views import hello, current_datetime, hours_ahead, ua, display_meta
 from books.views import search_form, search
 from contact.views import contact, thanks, my_image, unruly_passengers_csv, hello_pdf
 from contact.forms import ContactForm
 #from account.views import login_view
 from django.contrib.auth.views import login, logout
+from users.views import index
+from length_check.views import search_test
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -44,4 +46,5 @@ urlpatterns = [
     #url(r'^accounts/logout/$', logout),
     url(r'^users/', include('users.urls',namespace="users")),
     url(r'^users/', include('django.contrib.auth.urls')),
+    url(r'^length_check/$', search_test),
 ]

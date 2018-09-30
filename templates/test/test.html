@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>长度检查数据查询</title>
+</head>
+<body>
+    {% if test %}
+        <p>Found {{ test|length }} country{{ test|pluralize}}.</p>
+        <ul>
+            {% for t in test %}
+            <li>{{ t.title }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No country matched you search criteria.</p>
+    {% endif %}
+</body>
+</html>
