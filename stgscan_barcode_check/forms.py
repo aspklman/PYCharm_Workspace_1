@@ -54,7 +54,6 @@ class BarcodeCheckForm(forms.Form):
                 winsound.Beep(300, 600)
                 raise forms.ValidationError('【客户条码】重复扫描，请检查！')
             # 检查【工厂条码】与【客户条码】是否对应
-
         else:
             winsound.Beep(300, 600)
             # wavefile = "voice\cuowu.wav"

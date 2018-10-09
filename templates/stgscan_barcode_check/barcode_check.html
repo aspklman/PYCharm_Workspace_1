@@ -23,14 +23,26 @@
     <!--}-->
     <!--</script>-->
 
+    <script>
+    function myFunction()
+    {
+        // x=document.getElementById("codef_display");  // 找到元素
+        y=document.getElementById("codec_display");  // 找到元素
+        // var scanf={{ form.codef.value }};
+        var scanc={{ form.codec.value }};
+        // x.innerHTML=scanf.toString();    // 改变内容
+        y.innerHTML=scanc.toString();    // 改变内容
+    }
+    </script>
+
 </head>
 <body>
     <h3>条码对应扫描</h3>
 
-    <!--<h3 style="color:green">-->
-        <!--<b>工厂条码：</b><b id='codef_display'></b><br>-->
-        <!--<b>客户条码：</b><b id='codec_display'></b>-->
-    <!--</h3>-->
+    <h3 style="color:green">
+        <b>工厂条码：</b><b id='codef_display'></b><br>
+        <b>客户条码：</b><b id='codec_display'></b>
+    </h3>
 
     <style type="text/css">
         ul.errorlist{
@@ -47,34 +59,56 @@
         }
     </style>
 
-    {% if form.errors %}
-        <p style="color:red">
-            <b>请更正以下错误：{{ form.errors }}</b>
-        </p>
-    {% endif %}
+    <!--{% if form.errors %}-->
+        <!--<p style="color:red">-->
+            <!--<b>请更正以下错误：{{ form.errors }}</b>-->
+        <!--</p>-->
+    <!--{% endif %}-->
+
 
     <form action="" method="post">
-        <div class="field{%if form.codef.errors%} errors {% endif %}">
-            <label for="id_codef">工厂条码(12位)：</label>
+        <div class="field">
+            <label for="id_codef">工厂条码：</label>
             {{ form.codef }}
-            {% if form.codef.errors %}
-                {% for error in form.codef.errors %}
-                    {{ error }}
-                {% endfor %}
-            {% endif %}
-        </div>  
-        <div class="field{%if form.codec.errors%} errors {% endif %}">
-            <label for="id_codec">客户条码(20位)：</label>
-            {{ form.codec }}
-            {% if form.codec.errors %}
-                {% for error in form.codec.errors %}
-                    {{ error }}
-                {% endfor %}
-            {% endif %}
+            {{ form.codef.errors }}
         </div>
         <br>
-
+        <div class="field">
+            <label for="id_codec">客户条码：</label>
+            {{ form.codec }}
+            {{ form.codec.errors}}
+        </div>
+        <br>
+        <input type="submit" value="条码对应" onclick="myFunction()">
     </form>
+
+    <!--{% if form.errors %}-->
+        <!--<p style="color:red">-->
+            <!--<b>请更正以下错误：{{ form.errors }}</b>-->
+        <!--</p>-->
+    <!--{% endif %}-->
+
+    <!--<form action="" method="post">-->
+        <!--<div class="field{%if form.codef.errors%} errors {% endif %}">-->
+            <!--<label for="id_codef">工厂条码(12位)：</label>-->
+            <!--{{ form.codef }}-->
+            <!--{% if form.codef.errors %}-->
+                <!--{% for error in form.codef.errors %}-->
+                    <!--{{ error }}-->
+                <!--{% endfor %}-->
+            <!--{% endif %}-->
+        <!--</div>  -->
+        <!--<div class="field{%if form.codec.errors%} errors {% endif %}">-->
+            <!--<label for="id_codec">客户条码(20位)：</label>-->
+            <!--{{ form.codec }}-->
+            <!--{% if form.codec.errors %}-->
+                <!--{% for error in form.codec.errors %}-->
+                    <!--{{ error }}-->
+                <!--{% endfor %}-->
+            <!--{% endif %}-->
+        <!--</div>-->
+        <!--<br>-->
+    <!--</form>-->
 
 </body>
 </html>
