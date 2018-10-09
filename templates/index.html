@@ -11,6 +11,7 @@
       <button class="btn btn-default"><a href="{% url 'logout' %}?next={{ request.path }}">注销登录</a></button>
       <button class="btn btn-default"><a href="{% url 'password_change' %}?next={{ request.path }}">修改密码</a></button>
       <p><a href="/gdpdata">点击查询GDP数据</a></p>
+      <p><a href="/barcode_check">条码对应扫描</a></p>
     {% else %}
       <p>你还没有登录，请
         <button class="btn btn-default"><a href="{% url 'login' %}?next={{ request.path }}">登录</a></button>
