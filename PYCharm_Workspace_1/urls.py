@@ -25,6 +25,7 @@ from contact.forms import ContactForm
 from django.contrib.auth.views import login, logout
 from users.views import index
 from gdpdata.views import gdpdata
+from stgscan_barcode_check.views import barcode_check
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -47,4 +48,5 @@ urlpatterns = [
     url(r'^users/', include('users.urls',namespace="users")),
     url(r'^users/', include('django.contrib.auth.urls')),
     url(r'^gdpdata/$', gdpdata),
+    url(r'^barcode_check/$', barcode_check),
 ]
