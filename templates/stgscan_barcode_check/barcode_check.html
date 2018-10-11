@@ -4,45 +4,46 @@
     <meta charset="UTF-8">
     <title>Barcode_Check</title>
 
+    <!--<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>-->
+
+    <script>
+    function myFunction(scan1,scan2)
+    {
+        // var temp = $('#codef_display').val();
+        // temp = '123'
+        var code_length=scan1 + '/' + scan2;
+        alert(code_length);
+        // if (code_length == 12)
+        //     {
+        //         x=document.getElementById("codef_display");  // 找到元素
+        //     }
+        // else if (code_length == 20)
+        //     {
+        //         x=document.getElementById("codec_display");  // 找到元素
+        //     }
+    // {% for key,value in form.scan.items %}
+    //     var s={{ form.scan.value|length }};
+    // {% endfor %}
+    // alert(scan)
+    // x.innerHTML=s;    // 改变内容
+    }
+    </script>
+
     <!--<script>-->
     <!--function myFunction()-->
     <!--{-->
-        <!--var code_length={{ form.scan.value|length }};-->
-        <!--// alert(code_length);-->
-        <!--if (code_length == 12)-->
-            <!--{-->
-                <!--x=document.getElementById("codef_display");  // 找到元素-->
-            <!--}-->
-        <!--else if (code_length == 20)-->
-            <!--{-->
-                <!--x=document.getElementById("codec_display");  // 找到元素-->
-            <!--}-->
-    <!--var scan={{ form.scan.value }};-->
-    <!--// alert(scan)-->
-    <!--x.innerHTML=scan;    // 改变内容-->
+        <!--x=document.getElementById("codef_display");  // 找到元素-->
+        <!--// y=document.getElementById("codec_display");  // 找到元素-->
+        <!--var scanf={{ form.scan.value }};-->
+        <!--// var scanc={{ form.codec.value }};-->
+        <!--x.innerHTML=scanf.toString();    // 改变内容-->
+        <!--// y.innerHTML=scanc.toString();    // 改变内容-->
     <!--}-->
     <!--</script>-->
-
-    <script>
-    function myFunction()
-    {
-        // x=document.getElementById("codef_display");  // 找到元素
-        y=document.getElementById("codec_display");  // 找到元素
-        // var scanf={{ form.codef.value }};
-        var scanc={{ form.codec.value }};
-        // x.innerHTML=scanf.toString();    // 改变内容
-        y.innerHTML=scanc.toString();    // 改变内容
-    }
-    </script>
 
 </head>
 <body>
     <h3>条码对应扫描</h3>
-
-    <h3 style="color:green">
-        <b>工厂条码：</b><b id='codef_display'></b><br>
-        <b>客户条码：</b><b id='codec_display'></b>
-    </h3>
 
     <style type="text/css">
         ul.errorlist{
@@ -67,19 +68,51 @@
 
 
     <form action="" method="post">
+        <!--<div class="field">-->
+            <!--<label for="id_codef">工厂条码：</label>-->
+            <!--{{ form.codef }}-->
+            <!--{{ form.codef.errors }}-->
+        <!--</div>-->
+        <!--<br>-->
+        <!--<div class="field">-->
+            <!--<label for="id_codec">客户条码：</label>-->
+            <!--{{ form.codec }}-->
+            <!--{{ form.codec.errors}}-->
+        <!--</div>-->
+        <!--<br>-->
         <div class="field">
-            <label for="id_codef">工厂条码：</label>
-            {{ form.codef }}
-            {{ form.codef.errors }}
+            <label for="id_scan1"></label>
+            <h3 style="color:green">
+                {% if not form.scan1.errors %}
+                    {% if form.scan1.value|length == 12 %}
+                        <b>工厂条码：</b><b id='codef_display'>{{ form.scan1.value }}</b><br>
+                    {% endif %}
+                    <!--{% if form.scan.value|length == 20 %}-->
+                        <!--<b>客户条码：</b><b id='codec_display'>{{ form.scan.value }}</b>-->
+                    <!--{% endif %}-->
+                {% endif %}
+            </h3>
+            {{ form.scan1 }}
+            {{ form.scan1.errors}}
+        </div>
+        <!--<br>-->
+        <div class="field">
+            <label for="id_scan2"></label>
+            <h3 style="color:green">
+                {% if not form.scan2.errors %}
+                    <!--{% if form.scan1.value|length == 12 %}-->
+                        <!--<b>工厂条码：</b><b id='codef_display'>{{ form.scan1.value }}</b><br>-->
+                    <!--{% endif %}-->
+                    {% if form.scan2.value|length == 20 %}
+                        <b>客户条码：</b><b id='codec_display'>{{ form.scan2.value }}</b>
+                    {% endif %}
+                {% endif %}
+            </h3>
+            {{ form.scan2 }}
+            {{ form.scan2.errors}}
         </div>
         <br>
-        <div class="field">
-            <label for="id_codec">客户条码：</label>
-            {{ form.codec }}
-            {{ form.codec.errors}}
-        </div>
-        <br>
-        <input type="submit" value="条码对应" onclick="myFunction()">
+        <input type="submit" value="条码对应" onclick="myFunction('{{form.scan2.value}}','{{form.scan2.value}}')">
     </form>
 
     <!--{% if form.errors %}-->
