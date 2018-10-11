@@ -9,8 +9,8 @@ from stgscan_barcode_check.forms import BarcodeCheckForm
 def barcode_check(request):
     if request.method == 'POST':
         form = BarcodeCheckForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
+        # if form.is_valid():
+        #     cd = form.cleaned_data
 
             # return HttpResponse('工厂条码：' + cd['codef'] + '<br>客户条码：' + cd['codec'])
             # return HttpResponse(cd['scan'])

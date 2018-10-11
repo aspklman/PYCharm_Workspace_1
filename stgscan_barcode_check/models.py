@@ -31,9 +31,18 @@ class Odrsscc_pp_xml(models.Model):
 
 class V_sis_sis_barcode_check_f(models.Model):
     fact_no = models.CharField(primary_key=True,max_length=4)
-    ctn_no = models.CharField(primary_key=True, max_length=12)
-    sku_number = models.CharField(max_length=35)
+    ctn_no = models.CharField(primary_key=True,max_length=12)
+    sku_number = models.CharField(max_length=64)
     qty = models.IntegerField()
 
     class Meta:
         db_table = 'v_sis_sis_barcode_check_f'
+
+class V_sis_sis_barcode_check_c(models.Model):
+    fact_no = models.CharField(primary_key=True,max_length=4)
+    ctn_no = models.CharField(primary_key=True,max_length=64)
+    sku_number = models.CharField(max_length=64)
+    qty = models.IntegerField()
+
+    class Meta:
+        db_table = 'v_sis_sis_barcode_check_c'
