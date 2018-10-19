@@ -8,6 +8,17 @@
 
     <script type="text/javascript" src="jquery.js"></script>
 
+    <script>
+        Quagga.decodeSingle({
+          readers: ['code_128_reader'],
+          locate: true, // try to locate the barcode in the image
+          src: '/test/fixtures/code_128/image-001.jpg' // or 'data:image/jpg;base64,' + data
+        },
+        function(result){
+          console.log(result);
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $("p").click(function(){
@@ -17,11 +28,11 @@
     </script>
 
     <script>
-    function f_write(){
-        var x;
-        x = document.getElementById("scan_display").innerHTML;
-        document.all.codef_display.value = x;
-    }
+        function f_write(){
+            var x;
+            x = document.getElementById("scan_display").innerHTML;
+            document.all.codef_display.value = x;
+        }
     </script>
 
     <script>
@@ -42,11 +53,11 @@
     <!--<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>-->
 
     <!--<script>-->
-    <!--function myFunction(scan1,scan2)-->
+    <!--function myFunction(scan1,scan2,status)-->
     <!--{-->
         <!--// var temp = $('#codef_display').val();-->
         <!--// temp = '123'-->
-        <!--var code_length=scan1 + '/' + scan2;-->
+        <!--var code_length=scan1 + '/' + scan2 + '/' + status;-->
         <!--alert(code_length);-->
         <!--// if (code_length == 12)-->
         <!--//     {-->
@@ -80,7 +91,14 @@
 <body>
     <h2>条码对应扫描</h2>
 
-    <h2 style="color:blue">对应状态：</h2>
+    <table>
+        <tr>
+            <td><font size="16" color="blue">对应状态：</font></td>
+            <td><font size="16" color="red">错误</font></td>
+        </tr>
+        <!--<h2 style="color:blue">对应状态：</h2><b style="color:red">错误</b>-->
+    </table>
+
 
     <style type="text/css">
         ul.errorlist{
@@ -103,6 +121,9 @@
         <!--</p>-->
     <!--{% endif %}-->
 
+
+
+
     <form action="" method="post">
         <!--<div class="field">-->
             <!--<label for="id_codef">工厂条码：</label>-->
@@ -119,7 +140,7 @@
 
         <!--<div class="field">-->
             <!--<h3 style="color:green">-->
-                <!--<b>工厂条码：</b><b id='codef_display'>abc</b><br>-->
+                <!--<b>工厂条码：</b><b id='codef_display'>ghi</b><br>-->
             <!--</h3>-->
         <!--</div>-->
         <!--&lt;!&ndash;<br>&ndash;&gt;-->
@@ -195,7 +216,6 @@
         <button type="button" onclick="myFunction()">清空</button>
         <!--<input type="submit" value="对应" onclick="f_write()">-->
         <!--<input type="button" value="对应" onclick="f_compare('{{ form.scan.value }}')">-->
-        <!--<input type="submit" value="条码对应" onclick="myFunction('{{form.scan1.value}}','{{form.scan2.value}}')">-->
     </form>
 
     <!--{% if form.errors %}-->

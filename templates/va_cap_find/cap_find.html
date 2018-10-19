@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VA照片查询</title>
+
+    {% load staticfiles %}
+    <!--<p><img src="{% static 'cap.png' %}"></p>-->
+
+    <script>
+        function myFunction(){
+            var x = document.getElementById("ctn_no").value;
+            if (x == ''){
+                alert('请输入外箱编号！')
+            }
+            else if (x.length != 20){
+                alert('外箱编号长度错误！')
+            }
+            var y1 = '/' + x + '_a.bmp';
+            var y2 = '/' + x + '_b.bmp';
+            document.getElementById('cap_a').src = y1;
+            document.getElementById('cap_b').src = y2;
+        }
+    </script>
+
+    <!--<script>-->
+        <!--$(document).ready(function(){-->
+            <!--var x = document.getElementById("ctn_no").value;-->
+            <!--var y = x + '_a.bmp';-->
+            <!--alert(y);-->
+            <!--$("button").click(function(){-->
+            <!--$("cap_a").src("\\192.168.1.125\vascan\" + y);-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
+</head>
+<body>
+    <h2 style="color:blue">VA照片查询</h2>
+
+    外箱编号：<input id="ctn_no" type="text" value="">
+    <button type="button" onclick="myFunction()">查询</button>
+    <br><br>
+    图片A:
+    <br>
+    <img id="cap_a" src="" />
+    <br><br>
+    图片B:
+    <br>
+    <img id="cap_b" src="" />
+</body>
+</html>
