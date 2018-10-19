@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Welcome</title>
 </head>
 <body>
@@ -12,6 +14,7 @@
       <button class="btn btn-default"><a href="{% url 'password_change' %}?next={{ request.path }}">修改密码</a></button>
       <p><a href="/gdpdata">点击查询GDP数据</a></p>
       <p><a href="/barcode_check">条码对应扫描</a></p>
+      <p><a href="/va_cap_find">VA照片查询</a></p>
     {% else %}
       <p>你还没有登录，请
         <button class="btn btn-default"><a href="{% url 'login' %}?next={{ request.path }}">登录</a></button>

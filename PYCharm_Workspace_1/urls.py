@@ -14,6 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib import staticfiles
+
+from django.views.static import serve
 
 from django.conf.urls import include, url
 from django.contrib import admin
@@ -25,7 +29,11 @@ from contact.forms import ContactForm
 from django.contrib.auth.views import login, logout
 from users.views import index
 from gdpdata.views import gdpdata
-from stgscan_barcode_check.views import barcode_check
+from stgscan_barcode_check.views import barcode_check, test, jquery
+from va_cap_find.views import va_cap_find#, cap_a, cap_b
+from django.contrib.staticfiles.urls import static
+# from PYCharm_Workspace_1 import settings
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -49,4 +57,12 @@ urlpatterns = [
     url(r'^users/', include('django.contrib.auth.urls')),
     url(r'^gdpdata/$', gdpdata),
     url(r'^barcode_check/$', barcode_check),
+    url(r'^va_cap_find/$', va_cap_find),
+    url(r'^test/$', test),
+    url(r'^jquery/$', jquery),
+    url(r'^(?P<path>.*)$', serve, {'document_root': '\\\\192.168.1.125\\vascan'})
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+
+# urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
